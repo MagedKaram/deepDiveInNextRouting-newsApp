@@ -1,8 +1,12 @@
 import { DUMMY_NEWS } from "@/app/dummy-news";
+import { notFound } from "next/navigation";
 
 export default function NewsDetailPage({ params }) {
   const newsSlug = params.slug;
   const newsDetail = DUMMY_NEWS.find((news) => news.slug === newsSlug);
+  if (!newsDetail) {
+    notFound();
+  }
   return (
     <article className="news-article">
       <header>
