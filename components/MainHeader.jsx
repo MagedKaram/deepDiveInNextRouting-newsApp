@@ -1,4 +1,11 @@
 import Link from 'next/link';
+import NavbarLink from './NavbarLink';
+
+const nabarLinks = [
+    { href: "/news", label: "News" },
+    { href: "/archive", label: "Archive" },
+
+];
 
 export default function MainHeader() {
     return (
@@ -8,12 +15,11 @@ export default function MainHeader() {
             </div>
             <nav>
                 <ul>
-                    <li>
-                        <Link href="/news">News</Link>
-                    </li>
-                    <li>
-                        <Link href="/archive">Archive</Link>
-                    </li>
+                    {nabarLinks.map((link) => (
+                        <li key={link.href}>
+                            <NavbarLink href={link.href} label={link.label} />
+                        </li>
+                    ))}
                 </ul>
             </nav>
         </header>
